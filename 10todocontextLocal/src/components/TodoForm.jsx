@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useTodo } from '../contexts/TodoContext';
+import { useTodo } from "../contexts/TodoContext";
 
 function TodoForm() {
-    
   const [todo, setTodo] = useState("");
 
   const { addTodo } = useTodo();
@@ -12,9 +11,9 @@ function TodoForm() {
 
     if (!todo) return;
 
-    addTodo({ todo, completed: false})
-      setTodo("")
-  }
+    addTodo({ todo: todo, completed: false });
+    setTodo("");
+  };
 
   return (
     <form onSubmit={add} className="flex">

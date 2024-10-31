@@ -11,10 +11,15 @@ export default function Post() {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
+    console.log(userData);
+
+    console.log(slug);
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
+    console.log(isAuthor);
 
     useEffect(() => {
+
         if (slug) {
             appwriteService.getPost(slug)
             .then((post) => {
@@ -22,15 +27,17 @@ export default function Post() {
                 else navigate("/");
             });
         } else navigate("/");
+
     }, [slug, navigate]);
 
     const deletePost = () => {
 
         appwriteService.deletePost(post.$id).then((status) => {
 
-          
+         console.log(post.$id); 
 
             if (status) {
+                console.log(status);
                 appwriteService.deleteFile(post.featuredImage);
                 navigate("/");
             }

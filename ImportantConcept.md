@@ -1,0 +1,4 @@
+- component in React
+- UseState Hook
+  - Updating state based on the previous state. [Detail](https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state) 
+  - props

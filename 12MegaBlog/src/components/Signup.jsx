@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import authService from "../appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../store/authSlice";
-import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import authService from "../appwrite/auth";
+import { login } from "../store/authSlice";
+import { Button, Input, Logo } from "./index";
 
 
 function Signup() {
@@ -13,7 +13,7 @@ function Signup() {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const create = async (data) => {
+  const create = async (data) => {  
 
     setError("");
 
@@ -46,6 +46,7 @@ function Signup() {
             <Logo width="100%" />
           </span>
         </div>
+
         <h2 className="text-center text-2xl font-bold leading-tight">
           Sign up to create account
         </h2>
@@ -61,6 +62,7 @@ function Signup() {
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit(create)}>
+          
           <div className="space-y-5">
             
             <Input

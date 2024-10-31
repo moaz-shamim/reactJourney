@@ -134,6 +134,8 @@ Certainly! This code appears to be a JavaScript function that adds a new "todo" 
    - `{id: Date.now(), ...todo}`: This creates a new object with a unique `id` and copies all the properties from the `todo` object passed as an argument using the spread operator (`...`). So, the new todo item will have a unique `id` and the properties of the original `todo`.
    - `[...prev]`: This part creates a new array by spreading all the elements from the previous todo list, effectively keeping all the existing todos.
 
+For example, if the previous state of todos was [ { id: 1, todo: "Task 1", completed: false }, { id: 2, todo: "Task 2", completed: true } ], using ...prev would effectively create a copy of this array:
+
 4. The final result of this line is a new array that contains the newly created todo item at the beginning, followed by all the previous todos. This represents the updated list of todos.
 
 In summary, the `addTodo` function takes a `todo` object, generates a unique ID for it, and adds it to the list of todos, which is updated using the `setTodos` function. This is a common pattern for adding items to a list in React applications, where state is managed using functions like `setTodos`.

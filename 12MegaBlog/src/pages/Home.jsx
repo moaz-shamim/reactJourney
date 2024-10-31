@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from "react";
-import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
+import appwriteService from "../appwrite/config";
 
 function Home() {
   const [posts, setPosts] = useState([]);
 
+
   useEffect(() => {
+
     appwriteService.getPosts().then((posts) => {
       if (posts) {
+        console.log(posts);
         setPosts(posts.documents);
       }
     });
+
   }, []);
 
+
   if (posts.length === 0) {
+
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>
@@ -27,9 +33,11 @@ function Home() {
         </Container>
       </div>
     );
+
   }
 
   return (
+
     <div className="w-full py-8">
       <Container>
         <div className="flex flex-wrap">
@@ -41,6 +49,7 @@ function Home() {
         </div>
       </Container>
     </div>
+
   );
 }
 

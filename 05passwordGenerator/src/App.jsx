@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 function App() {
-
   //Setting Dependencies
 
   const [length, setLength] = useState(8);
@@ -9,57 +8,50 @@ function App() {
   const [charAllowed, setCharAllowed] = useState(false);
   const [password, setPassworrd] = useState("");
 
-
   // useRef hook to take reference
 
   const passwordRef = useRef(null);
 
-
-
   //Function that generate password
 
-  const passwordGenerator = useCallback( () => {
-
+  const passwordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     if (numAllowed) str = str + "0123456789";
     if (charAllowed) str = str + "!@$%^&()_=[]{}|:',./<?;";
 
-    for (let i = 0; i <= length; i++) {
-      let char = Math.floor(Math.random() * str.length + 1);
-      pass = pass + str.charAt(char);
+    for (let i = 0; i < length; i++) {
+      let randomNum = Math.floor(Math.random() * str.length + 1);
+      pass = pass + str.charAt(randomNum);
     }
 
     setPassworrd(pass);
   }, [length, numAllowed, charAllowed, setPassworrd]);
 
-
-
-  const copyPasswordToClipboard = useCallback(()=>{
-
-    // use of passwordRef "useRef();"
+  const copyPasswordToClipboard = useCallback(() => {
+    // use of passwordRef "useRef();" 
     passwordRef.current?.select();
     // set range of selection , optional selection using ?
-    passwordRef.current?.setSelectionRange(0,20);
+    passwordRef.current?.setSelectionRange(0, 20);
 
     window.navigator.clipboard.writeText(password);
-  }, [password])
-
-
-
-  
+  }, [password]);
 
   useEffect(() => {
     passwordGenerator();
   }, [length, numAllowed, charAllowed, passwordGenerator]);
 
 
+
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-8 my-8   text-orange-500 bg-gray-700">
-        <h1 className="text-white text-center my-3">Password Generator</h1>
-        <div className="flex shadow rounded-lg overflow-hidden md-4">
+      <div className="w-full h-fit max-w-md mx-auto shadow-md rounded-lg px-4 py-4 my-8   text-orange-500 bg-gray-900">
+
+        <h1 className="text-white text-center text-[30px] my-4">Password Generator</h1>
+
+        <div className="flex shadow rounded-lg overflow-hidden md-4 my-4">
+
           <input
             type="text"
             value={password}
@@ -68,14 +60,19 @@ function App() {
             readOnly
             ref={passwordRef}
           />
-          <button 
-          onClick={copyPasswordToClipboard}
-          className="outline-none bg-blue-600 text-white px-3 py-0.5 shrink-0">
+          <button
+            onClick={copyPasswordToClipboard}
+            className="outline-none bg-blue-600 text-white px-3 py-0.5 shrink-0"
+          >
             Copy
           </button>
+
         </div>
-        <div className="flex text-sm gap-x-2">
-          <div className="flex items-center gap-x-1">
+
+        <div className="flex justify-between text-sm gap-x-2">
+          
+          <div className="flex items-center gap-x-3">
+           
             <input
               type="range"
               min={6}
@@ -87,6 +84,7 @@ function App() {
               }}
             />
             <label>Length:{length}</label>
+
           </div>
 
           <div className="flex items-center gap-x-1">
@@ -112,6 +110,7 @@ function App() {
             />
             <label htmlFor="characterInput">Characters</label>
           </div>
+
         </div>
       </div>
     </>

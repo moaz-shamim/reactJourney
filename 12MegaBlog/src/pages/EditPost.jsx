@@ -7,12 +7,15 @@ function EditPost() {
 
   const [post, setPosts] = useState(null);
   const { slug } = useParams();
+  
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if (slug) {
+      // console.log(slug);
       appwriteService.getPost(slug).then((post) => {
         if (post) {
+          // console.log(post);
           setPosts(post);
         }
       });

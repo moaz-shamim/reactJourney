@@ -1,4 +1,4 @@
-# Appwrite as backEnd - (Phase-01)
+  # Appwrite as backEnd - (Phase-01)
 
 "We do not delve into the backend details; instead, we utilize a Backend-as-a-Service for our app's backend.
 
@@ -30,7 +30,7 @@ react-hook-form
 
 ```
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 
 # Understand the Concept of Environment Variable - Creating our Environment Variable - (Phase-02)
 
@@ -48,7 +48,7 @@ Environment variables are useful because they allow programs to be flexible and 
 
 In summary, environment variables are special notes that programs use to understand how to behave. They keep sensitive information hidden, making your programs more secure, and they allow you to change settings without changing the program itself.
 
-**SettingUp Environment Variable**
+### SettingUp Environment Variable
 
 "Here are some important points to remember about environment variables:
 
@@ -82,7 +82,7 @@ In most cases, you can access the file this way like above example because the e
 
 **Q. Why we write _REACT_APP_APPWRITE_URL_ ?**
 
---> Because here we made our App through Create React App but we always not make by Create React App we use another bundler like vite react .
+*Because here we made our App through Create React App but we always not make by Create React App we use another bundler like vite react .*
 
 "In the **documentation**, it's specified that if someone creates an app using the 'create-react-app' method, they should begin the name of the environment variable with 'REACT_APP' (not necessarily in uppercase). When you want to access this environment variable, you should refer to it using 'process.env' followed by the variable's name as it appears in the file."
 
@@ -99,9 +99,9 @@ VITE_APPWRITE_BUCKET_ID = "";
 ```
 
 **_We get value of environment variable by setting-up our appwrite environment._**
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**"We typically access environment variables using 'import.meta.env,' but there is a more robust method commonly used in production-grade applications."**
+
+*"We typically access environment variables using 'import.meta.env,' but there is a more robust method commonly used in production-grade applications."*
 
 ```jsx
 const conf = {
@@ -114,12 +114,12 @@ const conf = {
 export default conf;
 ```
 
-"We implement a better approach to access environment variables by creating a folder named 'conf'/'config' Inside this folder, we create a file named 'Conf.js,' Inside our file we create one variable **conf** which is an _object_, and then we export this object key value pair.
-This allows us to avoid repeating 'import.meta.env' everywhere in our code, which could potentially lead to issues if you don't have access to it, causing your app to crash."
+*"We implement a better approach to access environment variables by creating a folder named 'conf'/'config' Inside this folder, we create a file named 'Conf.js,' Inside our file we create one variable **conf** which is an _object_, and then we export this object key value pair.
+This allows us to avoid repeating 'import.meta.env' everywhere in our code, which could potentially lead to issues if you don't have access to it, causing your app to crash."*
 
 Environment variable must be a string so wrap it into a string() method.
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 
 # Here we understand the concept of vendor-locking- By Creating appwrite Services - (Phase-03)
 
@@ -127,27 +127,32 @@ We are using the "appwrite" platform, which offers multiple services, including 
 
 The concept introduced for this purpose is called "**services**."
 
-**In our approach we make a services `Class` Inside that Class we made a method that actually provide a functionality of services**
+***In our approach we make a services `Class` Inside that Class we made a method that actually provide a functionality of services***
 
-In services we make a `class`,Inside that class we create some methods and then export those methods into our application. What happens within the method is unknown to the application. Services simply inform the application about the available data and which methods to use. That's it.
+* In services we make a `class`,Inside that class we create some methods and then export those methods into our application. What happens within the method is unknown to the application. Services simply inform the application about the available data and which methods to use. That's it.
 
-Now, I am talking to my Appwrite services or Firebase services or custom-made services. Our application doesn't need to worry about this; it only interacts with the service class that we have created. If, in the future, I want to use services from a different service provider, we can easily switch by only changing the methods of our class.
+* Now, I am talking to my Appwrite services or Firebase services or custom-made services. Our application doesn't need to worry about this; it only interacts with the service class that we have created. If, in the future, I want to use services from a different service provider, we can easily switch by only changing the methods of our class.
 
-Here In this section we are creating the authentication services from our service provider appwrite.
+* Here In this section we are creating the authentication services from our service provider appwrite.
 
-We go to the documentation of Appwrite to find boilerplate code. In our code, there are two major chunks. First, we have to set the endpoint and project ID from our environment variables. Then, we create an account.
+* We go to the documentation of Appwrite to find boilerplate code. In our code, there are two major chunks. First, we have to set the endpoint and project ID from our environment variables. Then, we create an account.
 
-Now, as we dive to our project,
 
-I want to create a service here. We use Appwrite services, so we create a service folder named "appwrite" inside the source folder. Here, we create our first file as "auth/authService.js." we use file name as auth because we deal with the services like authentication here In future we deal with database related services so we name the file as our services.
 
-In "authService.js," we import our "conf" object that contains all the environment variables we use in our service.
+## Now, as we dive to our project,
+
+I want to create a service here. We use Appwrite services, so we create a service folder named "**appwrite**" inside the source folder. Here, we create our first file as "auth/authService.js." we use file name as auth because we deal with the services like authentication here In future we deal with database related services so we name the file as our services.
+
+In "authService.js," we import our `conf` object that contains all the **environment variables** we use in our service.
 
 ```js
 import conf from "../conf/conf";
 ```
 
-Now, we move to the documentation. If I copy all the code from the documentation, then there is no issue, and all our work is done. So, why do we need to build a service? We always copy this code from the documentation.
+ ***Now, we move to the documentation. If I copy all the code from the documentation, then there is no issue, and all our work is done. So, why do we need to build a service? We always copy this code from the documentation.***
+
+
+### Subsection : ChatGPT
 
 Certainly! The line of code you're referring to is an import statement in JavaScript. It's used to bring in specific parts (modules or functions) from an external library or file. Let's break it down in easy language:
 
@@ -165,21 +170,25 @@ import { Client, Account, ID } from "appwrite";
 
 So, in plain language, this line of code says, "I want to use the `Client`, `Account`, and `ID` from the 'appwrite' library in my code." Once you've imported them, you can use these parts of the library in your code to work with the Appwrite service for tasks like managing user accounts and interacting with the Appwrite API.
 
-We create our services through a class. First, we define a class and export it to our application. Whoever makes use of this class must create an object from it, and once they have the object, they can access all its methods.
+***
+
+***We create our services through a class. First, we define a class and export it to our application. Whoever makes use of this class must create an object from it, and once they have the object, they can access all its methods.***
 
 ```js
 export class AuthSercice {}
 ```
 
-So, why not create an object and export it? Anyone who wants to use these methods can simply import the object and directly use all the methods using the dot operator.
+
+
+***So, why not create an object and export it? Anyone who wants to use these methods can simply import the object and directly use all the methods using the dot operator.***
 
 ```js
-//instance of that class
+//creating and exporting instance of that class
 const authSercice = new AuthSercice();
 export default authSercice;
 ```
 
-Now we have to create a client an account according to documentation because all method functionality of authentication are access by account.
+Now we have to create a `client` an `account` according to documentation because all method functionality of authentication are access by account.
 
 We create an account as a variable because, to create an account, we need a client, and up to this point, our client has not been created.
 
@@ -190,30 +199,23 @@ export class AuthSercice {
 }
 ```
 
-We do not create client properties in advance because we want these properties to be generated only when someone creates an object or service.For this purpose, we use a constructor that automatically invokes when an object is created.
+***
+***We do not create client properties in advance because we want these properties to be generated only when someone creates an object or service.For this purpose, we use a constructor that automatically invokes when an object is created.***
 
 We create the "setendpoint" and the "setproject" method, and within that, we assign value to "account" variable using **new Account(this.client)** inside the constructor.
 
-    ```js
-
+```js
 constructor() {
 this.client
 .setEndpoint(appwriteURL) // Your API Endpoint
 .setProject(appwriteProjectId); // Your project ID
 this.account = new Account(this.client);
 }
-
 ```
 
+***  
 
-
-
-
-
-
-
-
-**"Now, we will create methods that are used for handling user authentication services using the Appwrite API. We'll create different functions for various authentication related services, such as `createAccount`, `login`, `getCurrentUser`, and `logout`."**
+***"Now, we will create methods that are used for handling user authentication services using the Appwrite API. We'll create different functions for various authentication related services, such as `createAccount`, `login`, `getCurrentUser`, and `logout`."***
 
 
 ```js
@@ -237,11 +239,14 @@ async createAccount({ email, password, name }) {
 }
 ```
 
-**"We created a method called 'createAccount' inside our class. We marked it as synchronous (sync) because it involves a promise, and promises are asynchronous tasks. We use 'sync' to ensure that we wait until the account is created. I did this after reading the documentation for Appwrite."**
+***"We created a method called 'createAccount' inside our class. We marked it as synchronous (sync) because it involves a promise, and promises are asynchronous tasks. We use 'sync' to ensure that we wait until the account is created. I did this after reading the documentation for Appwrite."***
 
-"Whoever uses this service in Application won't need to know what's happening under the hood. This is an Authentication Service. Inside it, there's a 'createAccount' method where you pass values, and an account is automatically created. We don't even know what Appwrite is doing behind the scenes, how it's doing it, or how it's making entries in the database."
+***"Whoever uses this service in Application won't need to know what's happening under the hood. This is an Authentication Service. Inside it, there's a 'createAccount' method where you pass values, and an account is automatically created. We don't even know what Appwrite is doing behind the scenes, how it's doing it, or how it's making entries in the database."***
 
-"Now, one thing to note is that our flow is different. We first check if the user account exists. If it does, in the 'if' block, we provide the **sign-in functionality** that we have created."
+***"Now, one thing to note is that our flow is different. We first check if the user account exists. If it does, in the 'if' block, we provide the `sign-in functionality` that we have created."***
+
+
+### Subsection : ChatGPT
 
 Certainly! This code is part of a JavaScript module that appears to be used for handling user authentication using the Appwrite API. I'll explain the `createAccount` function in detail and in easy language:
 
@@ -268,9 +273,12 @@ In summary, this function is used to create a user account with the provided ema
 
 
 
+***
+
+***This part of the code is responsible for handling user login functionality using the Appwrite API. It's a method called `login` within a JavaScript module for user authentication. Here's a detailed explanation in easy language:***
 
 
-**This part of the code is responsible for handling user login functionality using the Appwrite API. It's a method called `login` within a JavaScript module for user authentication. Here's a detailed explanation in easy language:**
+
 
 ```javascript
 async login({ email, password }) {
@@ -283,6 +291,8 @@ async login({ email, password }) {
   }
 }
 ```
+
+### Subsection : ChatGPT
 
 In this code:
 
@@ -298,9 +308,10 @@ In this code:
 
 In summary, this `login` function tries to log a user in by creating an email session with the provided email and password. If there's an error during this process, it throws the error for further handling or logging.
 
-**"We created one more method to check whether the user is logged in or not. So, we added a method in the services class called 'getCurrentUser().' In 'getCurrentUser,' we don't pass any arguments; instead, we retrieve the value from the **account** appwrite variable . We check whether the user is logged in or not by using the 'get()' method, which we found in the documentation of Appwrite."**
+***
 
-This part of the code defines the `getCurrentUser` method, which is responsible for checking and retrieving information about the currently logged-in user. Here's an explanation in easy language:
+***"We created one more method to check whether the user is logged in or not. So, we added a method in the services class called 'getCurrentUser().' In 'getCurrentUser,' we don't pass any arguments; instead, we retrieve the value from the **account** appwrite variable . We check whether the user is logged in or not by using the 'get()' method, which we found in the documentation of Appwrite."***
+
 
 ```javascript
 async getCurrentUser() {
@@ -316,7 +327,10 @@ async getCurrentUser() {
 }
 ```
 
-In this code:
+### Subsection : ChatGPT
+
+This part of the code defines the `getCurrentUser` method, which is responsible for checking and retrieving information about the currently logged-in user. Here's an explanation in easy language:
+
 
 1. `async getCurrentUser() {`: This line defines an asynchronous function named `getCurrentUser`. It doesn't require any arguments because it's used to retrieve information about the currently logged-in user.
 
@@ -332,7 +346,10 @@ In this code:
 
 In summary, the `getCurrentUser` function is used to get information about the currently logged-in user. If there's an error or if no user is logged in, it returns `null` and logs the error for further analysis.
 
-**We create a method named 'logout()' where we use the 'delete session' service from Appwrite to implement the logout functionality.**
+***We create a method named 'logout()' where we use the 'delete session' service from Appwrite to implement the logout functionality.***
+
+
+### Subsection : ChatGPT
 
 This part of the code defines the `logout` method, which is responsible for logging a user out of the system. Here's an explanation in easy language:
 
@@ -364,7 +381,6 @@ In summary, the `logout` function is used to log a user out by deleting their se
 
 _"Note: You can use this snippet of services in all your projects for authentication-related services where you utilize the Appwrite Backend-as-a-Service."_
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 # (Phase-03) Continue...
 
@@ -372,7 +388,7 @@ In the last session, we discussed the authentication service and created it. We 
 
 The general approach we followed is to create separate services for storage and databases if those services are available. In our case, we combined these services, but we made sure to design them in a way that allows for future separation if needed. This approach ensures that our work is organized and can be reused easily in the future.
 
-**Let's dive into our project.**
+### Let's dive into our project.
 
 We've created a service inside our "appwrite" service folder, and we'll name it "config.js" because it contains a major configuration of our app. Of course, you can choose any name that you prefer. We'll follow the same starter approach as we did in our authentication service, using a class.
 
@@ -432,7 +448,10 @@ Method: `getPosts`
 
 This provides a clear overview of each method's purpose, the parameters they require, and what they return, making it easier for developers to work with your service.
 
-**createPost**
+***
+
+
+### createPost
 
 ```js
   async createPost({ title, slug, content, featuredImage, status, userId }) {
@@ -457,7 +476,9 @@ This provides a clear overview of each method's purpose, the parameters they req
 
 In summary, this function, createPost, is responsible for creating a new post in a database. It takes various data as input, such as the post's title, content, and user ID, and uses the `databases.createDocument` method to **store** this data in the specified **database** and collection. If any errors occur during this process, they are caught and logged to the console.
 
-**updatePost**
+*** 
+
+### updatePost
 
 ```javascript
 async updatePost(slug, { title, content, featuredImage, status }) {
@@ -518,9 +539,12 @@ This code is part of a JavaScript class called `Service` and defines an asynchro
 
 In summary, the `updatePost` function is responsible for updating an existing post in a database. It takes the post's `slug` and updated data as arguments, and it uses the `databases.updateDocument` method to perform the update. If any errors occur during the process, they are caught and logged to the console.
 
-**_One thing you notice missing in the documentation of Update document section in updateDocument() that we have to also pass {} object in updatedocument() method parameter._**
+**_One thing you notice missing in the documentation of appwrite in  Update document section in updateDocument() that we have to also pass {} object in updatedocument() method parameter._**
 
-**deletePost**
+
+*** 
+
+### deletePost
 
 ```javascript
 async deletePost(slug, { title, content, featuredImage, status }) {
@@ -585,9 +609,11 @@ This code is part of a JavaScript class called `Service` and defines an asynchro
 
 In summary, the `deletePost` function is responsible for deleting a specific post from a database. It takes the post's `slug` as an argument, deletes it using the `databases.deleteDocument` method, and returns `true` on successful deletion or `false` in case of an error. Note that the additional parameters in the function's signature are not relevant for the deletion process.
 
-**If you want to get a particular post by passing ID then for that we made a service method called getPost**
+***
 
-**getPost**
+### getPost
+
+**If you want to get a particular post by passing ID then for that we made a service method called getPost**
 
 ```javascript
 async getPost(slug) {
@@ -643,9 +669,11 @@ This code is part of a JavaScript class called `Service` and defines an asynchro
 
 In summary, the `getPost` function is responsible for retrieving a specific post from a database based on its unique slug. It takes the post's `slug` as an argument, retrieves it using the `databases.getDocument` method, and returns the post data. If any errors occur during the process, they are caught and logged to the console, and the function returns `false` to indicate that the retrieval was not successful.
 
+***
+### getPosts
+
 **_To obtain all the posts, we've created a method named `getPosts`. This method uses the `listDocuments` service from Appwrite to retrieve all the documents within a specific collection. However, we don't want all the documents, as that would include those with a "Not active" status. We specifically want to retrieve only those documents with an "active" status. To accomplish this, we need to understand the concept of queries._**
 
-**getPosts**
 
 ```javascript
 async getPosts(queries = [Query.equal("status", "active")]) {
@@ -680,7 +708,7 @@ This code defines a function called `getPosts`, which is part of a service class
 
 In easy language, this function is used to get a list of posts from a database. By default, it fetches only posts with an "active" status, but you can customize the query to retrieve posts based on different conditions if needed. If everything goes well, it returns the list of posts; if there's an issue, it returns `false` and logs an error message.
 
-_queries_
+**_queries_**
 
 ```javascript
 queries = [Query.equal("status", "active")];
@@ -688,7 +716,7 @@ queries = [Query.equal("status", "active")];
 
 This line of code is defining a variable named `queries`, and it's setting it to an array containing a query. Let me break it down further:
 
-- `queries`: This is a variable that will store one or more queries. Queries are used to specify conditions when retrieving data from a database or collection. In this case, `queries` will hold a single query condition.
+- `queries`: This is a variable that will store one or more queries. Queries are used to specify conditions when retrieving data from a database or collection. In this ca se, `queries` will hold a single query condition.
 
 - `=`: This is the assignment operator, which is used to give a value to the variable `queries`.
 
@@ -698,7 +726,8 @@ This line of code is defining a variable named `queries`, and it's setting it to
 
 In easy language, the line is defining a variable called `queries` and setting it to an array that contains a condition: "Retrieve data where the status is active." This condition will be used when fetching data from a database or collection, ensuring that only data with an "active" status is selected.
 
-**Let's move on to the next topic, which is Storage services. In the current file, we have implemented storage services. However, in the future, we may choose to organize these services into separate files for better code organization.**
+***
+### Let's move on to the next topic, which is Storage services. In the current file, we have implemented storage services. However, in the future, we may choose to organize these services into separate files for better code organization.
 
 Here, we have created two custom service methods:
 
@@ -802,7 +831,7 @@ Certainly! The provided code defines a method called `getFilePreview(fileId)` in
 
 In summary, this method allows you to obtain a preview or information about a file stored in your Appwrite storage. By providing the `fileId` and specifying the storage bucket (via `conf.appwriteBucketId`), you can retrieve details or a preview of the specified file. The information or preview is returned by this method for further use or display.
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 
 # Introduction of redux-toolkit in our Mega Project - (Phase-04)
 
@@ -891,9 +920,12 @@ The second method we've created inside our reducer is the 'logout' method, which
 
 To make these methods easily usable in different components, we export them individually. We export them using `authslice.actions`, which means we're exporting the actions defined in `authslice`.
 
+
 An action is essentially a method inside the reducer."
 
-**"Now, we move to 'App.jsx' to define the behavior of our application when it first loads."**
+***
+
+### "Now, we move to 'App.jsx' to define the behavior of our application when it first loads."
 
 "First, we check whether the user is logged in or not.
 
@@ -1005,9 +1037,9 @@ Certainly! This code is a common structure for a React application that uses Red
 
 In summary, this code sets up a React application with Redux state management. It renders the main `App` component inside the DOM element with the id "root." The Redux store is made available to the entire application using the `Provider` component, which allows components to access and update the application's state. The use of `React.StrictMode` helps catch potential issues during development.
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-# Making Production based Components - (Phase-05)
+
+# Making Production grade Components - (Phase-05)
 
 "Story"
 Creating a form is a straightforward process. We have two input fields: email and password, along with a login button. To build this form, we begin by capturing the input field values and storing them in a state. When the login button is clicked, we retrieve the values from this state using the `onclick` event functionality. This represents a basic syntax.
@@ -1016,7 +1048,7 @@ In our approach, we aim to develop **production-grade components**. We treat eac
 
 **We make Individual Component in Component folder**
 
-**_Container.jsx_**
+### _Container.jsx_
 
 ```jsx
 import React from "react";
@@ -1051,7 +1083,8 @@ Certainly! This code defines a simple React component named "Container." Its pur
 
 In summary, this code defines a reusable React component called "**_Container_**" that serves as a wrapper for other components or content. It applies some basic styling to the container, and you can use it to create a consistent layout for your application by placing your content or child components within it.
 
-**Now we make Footer Component in Component folder**
+***
+### Now we make Footer Component in Component folder
 
 Here's some important thing to notice Number one is <Link/> component , It is from react-router-dom and other is <Logo/> component we have also import logo to make a basic logo component that contain an image in logo.js , If you want to learn more about link component go to the **_Quickstart.md_** of project 07reactRouter
 
@@ -1077,7 +1110,7 @@ export default Logo;
 
 In summary, this code defines a React component called `Logo` that can display a text "Logo" in a `<div>` element. You can control the width of this component by providing a `width` prop, and if you don't provide one, it defaults to a width of 100 pixels. This component can be used in other parts of your React application to display logos with different widths as needed.
 
-**Now we make Header Component in Component folder**
+### Now we make Header Component in Component folder
 
 In the header component, our approach is slightly different because we aim to display only the relevant content based on the user's status. For instance, if a user is logged in, we won't show them a login button; instead, we'll display a **_logout button_**.
 
@@ -1085,7 +1118,7 @@ To implement this approach, we create separate button components and import them
 
 One thing to note is that after logging out, you need to take action by _dispatching a certain functionality to the store_ . This helps our application understand that the user has logged out.
 
-**LogoutBtn.jsx**
+### LogoutBtn.jsx
 
 ```jsx
 import React from "react";
@@ -1144,7 +1177,7 @@ Certainly! This code is a React component named "LogoutBtn" that represents a bu
 
 In summary, this code defines a React component called "LogoutBtn" that provides a button for users to log out of the application. It uses the `useDispatch` hook to dispatch a Redux action that updates the application's state when the user logs out. The actual logout process may involve interacting with an authentication service, which is not shown in the provided code.
 
-**Now we make Header Component in Component folder**
+### Now we make Header Component in Component folder
 
 ```js
 const authStatus = useSelector((state) => state.auth.status);
@@ -1253,45 +1286,9 @@ In this example, if `authStatus` is `true`, it will render the paragraph element
 
 The `{}` braces are often used in JSX (JavaScript eXtension) to include JavaScript expressions within the JSX code. In this case, it's used to conditionally render content based on the value of `authStatus`.
 
-**Header.jsx**
+*** 
 
-Certainly! This code is a React component named "Header" that represents the header section of a web page. The header typically contains navigation links and a logo. Here's an explanation of the code in easy-to-understand terms:
-
-1. **Importing Dependencies**:
-
-   - The code imports various dependencies such as `React`, custom components like `Container`, `Logo`, and `LogoutBtn`, as well as React Router's `Link`, `useSelector` from React Redux, and `useNavigate` from React Router.
-
-2. **Defining the Header Component**:
-
-   - The `Header` component is created and represents the header of a web page.
-
-3. **Accessing Authentication Status**:
-
-   - It uses the `useSelector` hook to access the authentication status from the Redux store. The `authStatus` variable holds whether a user is authenticated.
-
-4. **Navigation Setup**:
-
-   - The `useNavigate` hook is used to get a navigation function. This function allows you to programmatically navigate between different pages within the application.
-
-   - An array named `navItems` is defined, which contains objects representing navigation items. Each object has properties like `name` (the name of the link), `slug` (the path to navigate to), and `active` (a boolean indicating if the link should be active based on the user's authentication status).
-
-5. **Rendering the Header**:
-
-   - The code returns JSX for rendering the header.
-
-   - The header is contained within a `header` element and has a shadow and background color defined by CSS classes.
-
-   - Inside a `Container`, it places a `nav` element that contains navigation elements.
-
-   - The logo is displayed as a link (provided by `Link`) that navigates to the home page. It uses the `Logo` component with a specified width.
-
-   - The navigation items (such as "Home," "Login," "Signup," etc.) are displayed as buttons. Whether each button is shown depends on the user's authentication status. If the user is authenticated (`authStatus` is `true`), the button is displayed.
-
-   - If the user is authenticated, a "Logout" button is also displayed.
-
-In summary, the `Header` component represents the header of a web page, and it dynamically displays navigation links based on the user's authentication status. It uses custom components for the logo and logout button and relies on React Router for navigation.
-
-**Creation of Button.jsx**
+### Creation of Button.jsx
 
 One thing we've noticed is that we've designed buttons multiple times. Now, it's time to create a Button component and use it whenever we need a button. We'll create a `Button.jsx` file for this purpose.
 
@@ -1328,7 +1325,7 @@ Certainly! This code defines a React component called "Button" that represents a
 3. **Props and Default Values**:
 
    - The component takes several props, making it highly customizable:
-     - `children`: This prop represents the content to be displayed inside the button, such as text or other React components.
+     - `children`: This prop represents the content to be displayed inside the button, such as `text` or other React components.
      - `type`: This prop represents the type of the button (e.g., "button," "submit," or "reset"). By default, it's set to "button."
      - `bgColor`: This prop represents the background color of the button. By default, it's set to a shade of blue ("bg-blue-600").
      - `textColor`: This prop represents the text color of the button. By default, it's set to white ("text-white").
@@ -1343,6 +1340,8 @@ Certainly! This code defines a React component called "Button" that represents a
 In summary, this "Button" component is designed to create customizable buttons for your React application. It accepts various props to control the button's type, background color, text color, additional CSS classes, and content. This flexibility allows you to create buttons with different styles and behaviors throughout your application.
 
 In summary, `{...props}` in the code allows you to pass any additional props or attributes to the underlying `<button>` element when using the `Button` component. It provides flexibility and reusability, making it easier to customize the button's behavior and appearance in various contexts.
+
+***
 
 Certainly! Here's an example of how the `{...props}` spread operator can be used to pass additional props to the `Button` component:
 
@@ -1401,7 +1400,9 @@ The resulting HTML rendered by the `Button` component includes all these additio
 
 As you can see, the `{...props}` spread operator allows you to pass these additional attributes to the underlying `<button>` element inside the `Button` component, making it highly flexible and customizable for various use cases.
 
-**Creation of Input.jsx**
+***
+
+### Creation of Input.jsx
 
 Here, we are learning the concept of `forward referencing`.
 
@@ -1411,7 +1412,11 @@ While creating a login form, we use the Input Field component for both the usern
 import React, { useId } from "react";
 
 const Input = React.forwardRef(function Input(
-  { label, type = "text", className = "", ...props },
+  { label, 
+    type = "text", 
+    className = "", 
+    ...props 
+    },
   ref //importatnt
 ) {
   const id = useId();
@@ -1483,21 +1488,24 @@ Certainly! The provided code uses `React.forwardRef` and makes use of the `ref` 
 
 In summary, `React.forwardRef` allows you to forward a reference (`ref`) to a child element's DOM from a parent component. By assigning the `ref` to the `input` element's `ref` attribute, you can access and manipulate the input element's DOM from the parent component that uses the `Input` component. This enables you to perform actions like focusing, checking values, or manipulating the input element as needed.
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+***
 
-# (Phase-05) Components - Continue...
+### Here, we are creating a select button in `select.jsx`"
 
-**"Here, we are creating a select button in `select.jsx`."**
-
-**_Note_**
-"One thing to note is that in our `select.jsx`, we are utilizing `forwardRef()` functionality in the export section. However, in our `input.jsx`, we use `forwardRef()` at the top section and wrap all our functionality within it. Both approaches are correct."
-
-**select.jsx**
+### select.jsx
 
 ```jsx
 import React, { useId } from "react";
 
-function Select({ options, label, className = "", ...props }, ref) {
+function Select(
+  { options,
+    label, 
+    className = "", 
+    ...props 
+  }, 
+    ref) 
+
+  {
   const id = useId();
 
   return (
@@ -1589,7 +1597,13 @@ Certainly! This code is a React component called `Select` that is used to render
 
 In simple terms, this code defines a reusable select input component that can be customized with options, labels, and styling. It generates a unique ID for the select input, connects a label for accessibility, and renders the select dropdown with the provided options. The component can be used in other parts of your application to create select inputs easily.
 
-**"Now We are creating a `PostCard.jsx` component.**
+
+**_Note_**
+_One thing to note is that in our `select.jsx`, we are utilizing `forwardRef()` functionality in the export section. However, in our `input.jsx`, we use `forwardRef()` at the top section and wrap all our functionality within it. Both approaches are correct._
+
+***
+
+### Now We are creating a `PostCard.jsx` component.
 
 If you recall, when you initially view the project and are logged in, you have a card. By clicking on that card, you can read further articles. The card itself is a component, and we're creating it.
 
@@ -1690,11 +1704,14 @@ Certainly! The code you provided is a React component called `PostCard` that is 
 
 In summary, this code defines a React component called `PostCard` that renders a card for a blog post. It includes an image, a title, and a link to view the full post. The content and styling are determined by the props passed to the component.
 
-**"Now, we're creating a new login component (important component).**
+
+***
+
+### Now, we're creating a new `login` component (important component).
 
 We can manage inputs by updating the state, but in this case, we're developing a production-grade component for scalability.
 
---> Here, we are learning about **_React Hook Form_**."
+#### Here, we are learning about `useForm` that is from _react-hook-form_
 
 React Hook Form is a library for managing form state and validation in React applications. It provides a set of React hooks and components that make it easy to create and manage forms. React Hook Form is designed to be efficient, performant, and flexible, making it a popular choice for building forms in React applications.
 
@@ -1714,7 +1731,9 @@ Some key features and benefits of React Hook Form include:
 
 To use React Hook Form in your project, you typically install it as a package, import the necessary hooks and components, and then use them to build and manage your forms. It's a powerful tool for handling forms in React applications efficiently and effectively.
 
-**Login.jsx**
+***
+
+### Login.jsx
 
 Certainly! The code you provided is a React component called `Login`, which represents a user login form for a web application. It uses various libraries and components to create a functional login page. Let's break it down step by step:
 
@@ -1735,7 +1754,7 @@ Certainly! The code you provided is a React component called `Login`, which repr
 3. Hook and State Initialization:
 
    - The following lines initialize hooks and state variables used within the component:
-     - `const navigate = useNavigate();`: This hook from the "react-router-dom" library provides a function to navigate to different pages.
+     - `const navigate = useNavigate();`: This hook from the "react-router-dom" library provides a function to navigate to different pages programatically.
      - `const dispatch = useDispatch();`: This hook is used to access the Redux dispatch function for dispatching actions.
      - `const { register, handleSubmit } = useForm();`: This line uses the `useForm` hook from "react-hook-form" to manage form data and validation.
      - `const [error, setError] = useState("");`: This state variable is used to store error messages related to the login process.
@@ -1782,19 +1801,7 @@ Certainly! The code you provided is a React component called `Login`, which repr
 
    - The form includes two input fields for the user to enter their email and password. The `<Input>` component is used to create these fields, and it receives properties like `label`, `placeholder`, and validation rules via the `register` function from "react-hook-form."
 
-9. Sign-in Button:
-
-   - The "Sign in" button is created using the `<Button>` component. It submits the form when clicked.
-
-10. Export:
-    ```javascript
-    export default Login;
-    ```
-    - The component is exported so it can be used in other parts of the application.
-
-In summary, this code defines a React component for a login page. It handles user input, performs validation, communicates with an authentication service, and displays error messages. It uses various libraries and components to create a functional and styled login form.
-
-let's break down the line of code step by step:
+   let's break down the line of code step by step:
 
 ```jsx
 <Input
@@ -1814,23 +1821,23 @@ let's break down the line of code step by step:
 
 This line of code is rendering an email input field using the `<Input>` component. Let's explain each part:
 
-1. `<Input>` Component:
+* `<Input>` Component:
 
    - This is a custom React component used to render input fields in a form. It may have custom styling and functionality defined elsewhere in your codebase.
 
-2. `label` Prop:
+* `label` Prop:
 
    - `label="Email: "`: This sets the label for the input field, which will be displayed next to the input to indicate what the input is for (in this case, it's for an email address).
 
-3. `placeholder` Prop:
+* `placeholder` Prop:
 
    - `placeholder="Enter your email"`: This is the text that appears inside the input field before the user enters their email. It's a hint or prompt for the user.
 
-4. `type` Prop:
+* `type` Prop:
 
    - `type="email"`: This specifies that the input field should expect an email address as its value. Setting `type="email"` provides some built-in browser validation to ensure the input conforms to an email format.
 
-5. `{...register("email", { ... })}`:
+* `{...register("email", { ... })}`:
 
    - This part uses the `register` function provided by the "react-hook-form" library to connect the input field to the form's state and validation logic. It does the following:
 
@@ -1842,15 +1849,98 @@ This line of code is rendering an email input field using the `<Input>` componen
 
 In summary, this line of code creates an email input field with a label ("Email:"), a placeholder ("Enter your email"), and validation rules. It uses the "react-hook-form" library to handle form state and validation, ensuring that the user provides a valid email address before submitting the form. If the email address is not valid, the custom error message is displayed.
 
-```js
-const navigate = useNavigate();
 
-navigate("/");
-```
+The values in the `data` object that is passed to your `login` function come from the form fields defined in your JSX code and managed by the `react-hook-form` library. Let's break down how this works:
 
-"The advantage of navigating using the `useNavigate` method is that it allows for automatic programmatic navigation. In contrast, when navigating from a link, you have to **click** on it first to initiate the navigation."
+* **Form Fields Registration:**
+   ```jsx
+   const { register, handleSubmit } = useForm();
+   ```
 
-**Signup.jsx**
+   The `register` function is provided by `react-hook-form`. It is used to register your form inputs, and it allows the library to track the state and values of these inputs.
+
+* **Form JSX:**
+   ```jsx
+   <form onSubmit={handleSubmit(login)} className="mt-8">
+     {/* Form content */}
+   </form>
+   ```
+
+   In your JSX, you have a `<form>` element. The `onSubmit` attribute is set to the `handleSubmit` function from `react-hook-form`, with your `login` function as an argument. This setup tells `react-hook-form` to handle the form submission.
+
+* **Form Input Registration:**
+   ```jsx
+   <Input
+     label="Email:"
+     placeholder="Enter your email"
+     type="email"
+     {...register("email", {
+       required: true,
+       validate: {
+         matchPatern: (value) =>
+           /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+           "Email address must be a valid address",
+       },
+     })}
+   />
+   <Input
+     label="Password : "
+     type="password"
+     placeholder="Enter Your Password"
+     {...register("password", { required: true })}
+   />
+   ```
+
+   In your form content, you use the `Input` component (assuming it's a custom component or part of a UI library). The `{...register("fieldName", validationRules)}` syntax registers the input field with `react-hook-form`, associating it with a specific field name ("email" and "password" in this case).
+
+   The `register` function automatically tracks the state and values of these input fields.
+
+* **Handling Form Submission:**
+   ```jsx
+   const login = async (data) => {
+     setError("");
+     try {
+       const session = await authService.login(data);
+       // Rest of the code
+     } catch (error) {
+       setError(error.message);
+     }
+   };
+   ```
+
+   When the form is submitted, `react-hook-form` collects the values of registered fields and passes them as an object to your `login` function. The `data` parameter in your `login` function will look like this:
+
+   ```json
+   {
+     "email": "user@example.com",
+     "password": "secretpassword"
+   }
+   ```
+
+So, in summary, the values in the `data` object come from the user input in the form fields. The `react-hook-form` library manages the state of these form fields and passes their values to your submit function when the form is submitted.
+
+
+
+
+
+
+
+9. Sign-in Button:
+
+   - The "Sign in" button is created using the `<Button>` component. It submits the form when clicked.
+
+10. Export:
+    ```javascript
+    export default Login;
+    ```
+    - The component is exported so it can be used in other parts of the application.
+
+In summary, this code defines a React component for a login page. It handles user input, performs validation, communicates with an authentication service, and displays error messages. It uses various libraries and components to create a functional and styled login form.
+
+
+***
+
+### Signup.jsx
 
 Certainly! The provided code is a React component named `Signup`, which represents a user registration or sign-up form for a web application. It allows users to create a new account. Let's break down the code step by step:
 
@@ -1974,9 +2064,11 @@ This line of code is defining an input field for a user to enter their password 
 
 In summary, this line of code creates a password input field with a label ("Password:"), a placeholder ("Enter your password"), and a validation rule using the "react-hook-form" library. The input is required, which means that the user must provide a password before submitting the form.
 
-**Now, we will learn the concept of a real-time editor and a post page.**
+***
 
-**Now, we'll explore a component related to authentication – the `authentication layout component`.**
+### Now, we will learn the concept of a real-time editor and a post page.
+
+_Now, we'll explore a component related to authentication – the `authentication layout component`._
 
 The authentication layout component is a mechanism used to protect pages or routes. It acts as a protective container .
 
@@ -2066,11 +2158,10 @@ Certainly! This code is a React component called `Protected` that acts as a wrap
 
 In summary, this `Protected` component checks the user's authentication status. While the authentication status is being determined (while `loader` is `true`), it shows a loading message. Once the authentication status is determined, it either redirects the user to the appropriate page based on authentication requirements or displays the wrapped components if the user is authenticated.
 
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 # (Phase-06) Adding React-hook-form and Slug.
 
-**Now, we will learn the concept of a real-time editor**
+### Now, we will learn the concept of a real-time editor
 
 Certainly, here are the corrected paragraphs, each addressing the issue of passing references and forward references in React components:
 
@@ -2085,7 +2176,8 @@ The RTE (Rich Text Editor) component is utilized both in a post submission/edit 
 
 
 
-**We made a component named RTE.JSX**
+***
+### We made a component named RTE.JSX
 
 
 
@@ -2185,7 +2277,7 @@ In summary, this code creates a React component (`RTE`) that renders a rich text
 
 
 
-
+***
 
 _The issue lies in the fact that your editor is designed separately, serving as an **independent component**. We use it wherever needed, but the primary challenge is obtaining its **reference**. To address this reference concern, we employ a `controller` concept for the ad reference._
 
@@ -2193,45 +2285,13 @@ _The issue lies in the fact that your editor is designed separately, serving as 
 
 _In our functional component, we pass `name` and `control` as arguments. The `control` is obtained from React Hook Form, and it's responsible for managing the state and other functionalities related to the form. In the context of our form, we use this `control` to facilitate the movement of its states and other essential aspects to the designated location. Specifically, when integrating this RTE (Rich Text Editor) into our form, we utilize the `control` to seamlessly incorporate its functionality into the overall form structure.._
 
-_Controller pass control to desired place Controller give control to parent element._
+_Controller pass control to desired place Controller give control to parent element. whoever parent element call this component has an access of the state of that editor_
 
 _First, we establish a callback, specifying how we render an element and how we pass values to this callback. In this callback, we initiate by passing the `field` to the callback function. This `field` serves as a mechanism for tracking the value that we apply to it. If there's a failure in the tracking process, we examine the value we've applied to the `field`. In the body of the function, we pass the rendered function as an argument._
 
+### RTE.JSX (Approach 2 : With Controller) 
 
-
-
-
-
-**So we use <Controller/>**
-
-The `control={control}` part in your code is connecting the input field to the form's state. Let me explain it in easy language:
-
-1. **Managing Form State**:
-   - In a form, you want to keep track of the data entered by the user. You also need to manage things like validation and error handling.
-
-2. **The `control` Prop**:
-   - In your code, there's a prop called `control` that you pass to the `<Controller />` component.
-
-3. **What `control` Does**:
-   - The `control` prop is like a magic link that connects the input field to the larger form.
-   - It's provided by the `react-hook-form` library, and it handles all the behind-the-scenes work of managing form state for you.
-
-4. **Why it's Important**:
-   - When you connect the input field to the `control` object, you delegate the responsibility of handling the input's value, changes, and even validation to `control`.
-   - It simplifies your code and makes it much easier to work with forms in React.
-
-In simple terms, `control={control}` is like plugging your input field into the control center of your form. It ensures that the input is managed, validated, and connected to the form's overall state, all without you having to write a lot of complex code.
-
-
-
-
-___________________________________________________________________________________________________________
-
-
-
-**RTE.JSX** (Approach 2 : With Controller) 
-
-Certainly! This code defines a React component called `RTE` (Rich Text Editor) that utilizes the TinyMCE editor within a form. Let's break it down step by step:
+Certainly! This code defines a React component called `RTE` (Rich Text Editor) that utilizes the TinyMCE editor within a react hook form. Let's break it down step by step:
 
 1. **Import Statements:**
    ```jsx
@@ -2264,15 +2324,62 @@ Certainly! This code defines a React component called `RTE` (Rich Text Editor) t
    - If the `label` prop is provided, a label element is rendered with specific styling.
 
 5. **React Hook Form Controller:**
-   ```jsx
-       <Controller
-         name={name || "content"}
-         control={control}
-         render={({ field: { onChange } }) => (
-   ```
-   - The `Controller` component from `react-hook-form` is used to connect the TinyMCE editor with the form state.
+- The `Controller` component from `react-hook-form` is used to connect the TinyMCE editor with the form state.
    - It specifies the `name` and `control` props received from the parent component.
    - The `render` prop takes a function that receives an object with a destructured `field` object containing an `onChange` function.
+
+```jsx
+<Controller
+  name={name || "content"}
+  control={control}
+  render={({ field: { onChange } }) => (
+    // Content of the render function
+  )}
+/>
+```
+Certainly! Let's break down the provided code:
+
+The code you provided is using the `Controller` component from the `react-hook-form` library. This component is used to connect form fields with the state managed by the library. Let's break down each part:
+
+- **`<Controller>` Component:**
+   - This is a component provided by the `react-hook-form` library.
+   - It helps integrate third-party input components (like the `Editor` component from TinyMCE in this case) into the `react-hook-form` system.
+
+- **`name={name || "content"}`:**
+   - The `name` prop specifies the name of the field that this controller is going to control.
+   - If a `name` prop is provided, it uses that value (`name`). Otherwise, it defaults to "content."
+
+- **`control={control}`:**
+   - The `control` prop is used to provide the `control` object from the `useForm` hook in `react-hook-form`.
+   - The `control` object is responsible for managing the state of the form, including values, validation, etc.
+
+- **`render={({ field: { onChange } }) => (`:**
+   - The `render` prop is a function that receives an object containing various properties related to the controlled field.
+   - In this case, it uses destructuring to extract the `onChange` function from the `field` object.
+
+   ```jsx
+   ({ field: { onChange } }) => (
+     // Content of the render function
+   )
+   ```
+
+   - The `onChange` function is a callback that should be called whenever the value of the field changes. This is a crucial piece for integrating the controlled field with `react-hook-form`.
+
+   - The content inside the render function is where you place the actual form field component, in this case, the `Editor` component from the TinyMCE library.
+
+   ```jsx
+   <Editor
+     initialValue={defaultValue}
+     init={{
+       // TinyMCE configuration options
+     }}
+     onEditorChange={onChange}  // This connects the TinyMCE editor with react-hook-form
+   />
+   ```
+
+   - The `onEditorChange` prop of the `Editor` component is set to the `onChange` function. This ensures that whenever the content in the TinyMCE editor changes, the `onChange` function is called, updating the state managed by `react-hook-form`.
+
+In simpler terms, the `<Controller>` component helps integrate the `Editor` component from TinyMCE with the form state managed by `react-hook-form`. The `onChange` function ensures that changes in the TinyMCE editor are reflected in the form state. This way, you can easily include a rich text editor in your form and have its content controlled by `react-hook-form`.
 
 6. **TinyMCE Editor Component:**
    ```jsx
@@ -2303,17 +2410,7 @@ Certainly! This code defines a React component called `RTE` (Rich Text Editor) t
 
 In summary, this component integrates the TinyMCE editor with the `react-hook-form` library, allowing you to easily include a rich text editor in your forms with controlled state.
 
-___________________________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
-
+### Example
 
 ```javascript
 <Controller
@@ -2345,16 +2442,9 @@ Here's what's happening in this code in easy language:
 
 In summary, the `<Controller>` component is used to create a controlled checkbox input field that is connected to the form state and validation rules. The `render` function ensures that the `Checkbox` is controlled and follows the form's rules and updates the form data accordingly. This is a common approach when working with form libraries like `react-hook-form` to manage form inputs in React applications.
 
-___________________________________________________________________________________________________________
+***
 
-
-
-
-
-
-
-
-
+### Deep Down
 
 **name={name || "content"}**
 
@@ -2379,11 +2469,7 @@ The `name={name || "content"}` part in your code is setting the name for the inp
 
 So, in simple terms, `name={name || "content"}` sets the name for the input field. It uses the provided name if you specify one, or it defaults to "content" if you don't provide a name.
 
-
-
-___________________________________________________________________________________________________________
-
-
+ 
 **control={control}**
 
 The `control={control}` part in your code is connecting the input field to the form's state. Let me explain it in easy language:
@@ -2404,17 +2490,6 @@ The `control={control}` part in your code is connecting the input field to the f
 
 In simple terms, `control={control}` is like plugging your input field into the control center of your form. It ensures that the input is managed, validated, and connected to the form's overall state, all without you having to write a lot of complex code.
 
-
-___________________________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
 **render={({ field: { onChange } }) => ()}** 
 
 
@@ -2433,13 +2508,6 @@ Certainly, let's break down the code `render={({ field: { onChange } }) => ()}` 
    - This code is setting up how the input field should behave when users interact with it. Specifically, it's instructing the field to call the `onChange` function when changes occur. This is important because it connects the input field to the form's state, allowing it to capture and manage the data entered by the user.
 
 So, in simple terms, `render={({ field: { onChange } }) => { ... }` is telling the input field to use the `onChange` function to capture and handle any changes made by the user. This is a crucial part of making the input field work within a larger form, ensuring that any user input is correctly managed.
-
-
-___________________________________________________________________________________________________________
-
-
-
-
 
 
 **<Editor/>**
@@ -2465,9 +2533,6 @@ The `<Editor />` in your code is a component that provides a rich text editing i
 In simple terms, `<Editor />` is a special component that gives your users the power to create and format text just like in a word processor. It's a valuable tool when you need rich text input and editing capabilities in your web application.
 
 
-
-___________________________________________________________________________________________________________
-
 **onEditorChange={onChange}**
 
 The `onEditorChange={onChange}` part in your code is a connection that ensures any changes made in the rich text editor are captured and handled. Let's break it down in easy language:
@@ -2489,26 +2554,10 @@ The `onEditorChange={onChange}` part in your code is a connection that ensures a
 
 In simple terms, `onEditorChange={onChange}` is a way to make sure that any changes made in the rich text editor are captured and handled by the `onChange` function. It's like having a mechanism that listens to what the user is doing and takes action accordingly, such as saving or processing the edited content.
 
+***
+### PostForm.jsx
 
-
-
-
-
-
-
-
-
-
-___________________________________________________________________________________________________________
-
-
-**"We have created our real-time-editor. Here, we demonstrate how to use our editor by passing a label and taking control of the real-time-editor. To better understand this concept, we have created our form, PostForm.jsx Where we use our RTE component"**
-
-
-
-**PostForm.jsx**
-
-
+_"We have created our `real-time-editor`. Here, we demonstrate **how to use** our editor by passing a label and taking control of the real-time-editor. To better understand this concept, we have created our form, PostForm.jsx Where we use our RTE component"_
 
 
 Certainly! Let's break down the  code:
@@ -2550,15 +2599,9 @@ These import statements are bringing in various functionalities and components t
 
 "Firstly, we query this form because we do not know what the user wants. Maybe the user came to this form for editing purposes, or perhaps they came to pass a new value."
 
+***
 
-
-
-
-
-
-___________________________________________________________________________________________________________
-
-Certainly! Let's break down the code:
+***Certainly! Let's break down the code:***
 
 ### `const { register, handleSubmit, watch, setValue, control, getValues } = useForm();`
 
@@ -2584,35 +2627,9 @@ This line of code is using destructuring to assign values returned by the `useFo
    
    - `getValues`: A function that retrieves the current values of the form fields.
 
-### `register, handleSubmit, watch, setValue, control, getValues`
+***
 
-These are the functions/properties obtained from the `useForm` hook:
-
-- **`register`**: Used to register form inputs, providing validation rules and collecting input values.
-
-- **`handleSubmit`**: Takes a callback function that contains the logic for handling form submission. It is triggered when the form is submitted.
-
-- **`watch`**: Monitors changes in specified form fields. It can be used to trigger actions based on field value changes.
-
-- **`setValue`**: Allows programmatically setting the value of a form field. Useful for dynamically updating form values.
-
-- **`control`**: Provides control over the form, including methods for resetting, submitting, and interacting with the form.
-
-- **`getValues`**: Retrieves the current values of the form fields. This is useful for getting the latest form data.
-
-In summary, these functions and properties obtained from `useForm` collectively provide a powerful set of tools for managing and interacting with forms in a React application.
-
-___________________________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
-Certainly! Let's break down the provided code:
+***Certainly! Let's break down the provided code:***
 
 ```jsx
 const { register, handleSubmit, watch, setValue, control, getValues } =
@@ -2648,12 +2665,9 @@ Here's an explanation of each part of the code:
 
 In summary, this line of code sets up the form configuration using the `useForm` hook and extracts various functions and properties needed for form management. The default values for form fields are provided based on the `post` object, ensuring that existing values are used when available.
 
+***
 
-  ___________________________________________________________________________________________________________
-
-
-
-Certainly! Let's break down the code:
+***Certainly! Let's break down the code:***
 
 ```javascript
 if (post) {
@@ -2677,12 +2691,10 @@ In simpler terms, this code checks if there is an existing `post`. If there is, 
 
 
 In the provided code snippet, the data object seems to be used without being explicitly defined in the code. It's possible that the data object is defined elsewhere in the component or function that contains this code.
-  ___________________________________________________________________________________________________________
 
+***
 
-
-
-Certainly! Let's break down the code snippet you provided:
+***Certainly! Let's break down the code snippet you provided:***
 
 ```javascript
 if (post) {
@@ -2729,38 +2741,15 @@ Here's an explanation in easy language:
 
 In summary, this block of code handles the submission of a post form. If a post already exists (`post` is truthy), it uploads a new image file, deletes the existing featured image, updates the post with the new data, and then navigates to the updated post. If a post doesn't exist, it uploads a new image file, creates a new post, and navigates to the newly created post.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ___________________________________________________________________________________________________________
-
+***
 
 **Now we see the concept of Slug transform**
 
+***What does this 'slug transform' do?***
 
+_We have two **input fields** in our `form` : `title` and `slug`  We watch the 'title' and generate a value in the 'slug.' If the user enters a space, it automatically converts it into a dash. If the user inputs a space in the first input field, then in the second input field, the space is converted into a dash with the help of regex."_
 
-
-"What does this 'slug transform' do?
-
-We have two **input fields** in our `form` : `title` and `slug`  We watch the 'title' and generate a value in the 'slug.' If the user enters a space, it automatically converts it into a dash. If the user inputs a space in the first input field, then in the second input field, the space is converted into a dash with the help of regex."
-
-"Now, let's see how we use the 'slug transform' dependency method that we created. We use the 'useEffect' method with a dependency array in the 'useEffect'."
-
+_"Now, let's see how we use the 'slug transform' dependency method that we created. We use the 'useEffect' method with a dependency array in the 'useEffect'."_
 
 
 
@@ -2833,15 +2822,9 @@ This code defines a function named `slugTransform` using the `useCallback` hook.
 
 In summary, this function takes a string (`value`) and transforms it into a slug-like format. It trims, converts to lowercase, and replaces non-alphanumeric characters and whitespaces with hyphens. This is often used for creating URL-friendly slugs from user-provided titles or content. The `useCallback` hook is used here to memoize the function, which can be beneficial for performance optimization in certain React scenarios.
  
- 
- 
- 
- 
-  ___________________________________________________________________________________________________________
+ ***
 
-
-
-Certainly! Let's break down the `useEffect` block:
+**Certainly! Let's break down the `useEffect` block:**
 
 
 ```javascript
@@ -2886,17 +2869,9 @@ This `useEffect` hook is responsible for setting up a subscription to changes in
 In summary, this `useEffect` hook ensures that whenever the `title` field changes, it updates the `slug` field based on the transformed value. The cleanup function is added to unsubscribe from the changes when the component is unmounted or when dependencies change to avoid potential issues.
 
 
+***
 
-
-
-
-
-
-
-
-
-
-Certainly! Let's break down the line of code:
+**Certainly! Let's break down the line of code:**
 
 ```javascript
 if (name === "title") {
@@ -2916,15 +2891,9 @@ Here's an explanation in easy language:
 
 So, in simple terms, this code checks if the changed field is the "title" field, and if it is, it updates the "slug" field with a transformed version of the "title" value while triggering validation for the "slug" field.
 
+***
 
-
-
-
-
-
-
-
-Certainly! Let's break down the line of code:
+**Certainly! Let's break down the line of code:**
 
 ```javascript
 return () => {
@@ -2940,13 +2909,9 @@ Here's an explanation in easy language:
 
    - **`unsubscribe()`**: This method is commonly used to detach or unsubscribe from an event listener or observable. It's a way to clean up resources and prevent memory leaks when the component is no longer in use.
 
-In simpler terms, this piece of code is making sure to unsubscribe or stop listening to changes when the component is about to be removed from the screen. It's a good practice to clean up any subscriptions or listeners to avoid potential issues.
 
+_In simpler terms, this piece of code is making sure to unsubscribe or stop listening to changes when the component is about to be removed from the screen. It's a good practice to clean up any subscriptions or listeners to avoid potential issues._
 
-
-
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 # (Phase-07) Building Production grade Pages and Set Routing.
@@ -2954,13 +2919,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 Now, we create pages for our application in the "pages" folder located within the "src" folder. In the page folder we created different pages , we import our components from the "component" folder. 
 
 
-
-
-
-For example: 
-
-
-
+### Signup.jsx (Page)
 
 **if we want to create an "Signup" page to facilitate Sign up feature to our application, we import the "Signup" elements from the container component through the "index.js" file.**
 
@@ -3001,16 +2960,9 @@ Certainly! This code is a simple React component written in JavaScript. Let's br
 
 In summary, this code defines a React component named `Signup` that renders a `<div>` with a specific style and includes the `SignupComponent` within it. The actual signup-related UI and functionality are implemented in the `SignupComponent`, which is imported from another file or directory. The component is then exported for use in other parts of the application.
 
+***
 
-  ___________________________________________________________________________________________________________
-
-
-
-
-
-
-
-
+### AddPost.jsx (Page)
 
 
 **if we want to create an "AddPost" page to facilitate adding posts to our application, we import the "Container" and "PostForm" elements from the container component through the "index.js" file.**
@@ -3055,16 +3007,11 @@ Certainly! This code is another React component written in JavaScript. Let's bre
 In summary, this code defines a React component named `AddPost` that renders a `<div>` with a specific style. Inside this div, there is a `Container` component, and within the `Container`, there is a `PostForm` component. The `PostForm` likely contains the UI and functionality related to adding a post. The component is then exported for use in other parts of the application.
 
 
+***
 
-
-
-
-
-
-___________________________________________________________________________________________________________
+### AllPost.jsx (Page)
 
 **if we want to create an "AllPost" page to facilitate  the access of all post directly in our application, we import the "Signup" elements from the container component through the "index.js" file.**
-
 
 
 Certainly! This code is a React component written in JavaScript. Let's break it down step by step:
@@ -3135,20 +3082,9 @@ Certainly! This code is a React component written in JavaScript. Let's break it 
 In summary, this code represents a React component named `AllPosts` that fetches posts using Appwrite, updates the component state with the fetched posts, and then renders a list of posts using the `PostCard` component within a `Container`.
 
 
+***
 
-
-
-
-
-
-
-
-
-
-
-
-
-___________________________________________________________________________________________________________
+### EditPost.jsx (Page)
 
 **if we want to create an "EditPost" page to facilitate  the access of Editing a  post  in our application, we import the "Container, PostForm" elements from the container `component` through the "index.js" file.**
 
@@ -3173,11 +3109,6 @@ In the context of web development and content management systems, a **slug** is 
 For example, consider a blog post with the title "Introduction to React Hooks." The corresponding slug might be something like "introduction-to-react-hooks." Slugs are generally all lowercase, may include hyphens to separate words, and they often exclude special characters or spaces. This makes them suitable for inclusion in a URL.
 
 In the code you provided for the `EditPost` component, the `slug` is obtained using the `useParams` hook from the "react-router-dom" library. This hook retrieves parameters from the URL, and in this case, it's used to get the `slug` parameter from the URL path. The `slug` is then likely used to identify and fetch a specific post for editing or displaying details.
-
-
-
-
-
 
 
 Certainly! This code is a React component written in JavaScript. Let's break it down step by step:
@@ -3252,16 +3183,9 @@ Certainly! This code is a React component written in JavaScript. Let's break it 
 
 In summary, this code represents a React component named `EditPost` that fetches a specific post based on the `slug` parameter from the route, updates the component state with the fetched post, and then renders a `PostForm` component within a `Container`. If no `slug` is present, it navigates the user to the home page.
 
+***
 
-
-
-
-
-
-
-
-
-___________________________________________________________________________________________________________
+### Home.jsx (Page)
 
 **if we want to create an "Home" page that serve as the main Page in our application, we import the "Container, PostCard" elements from the container `component` through the "index.js" file.**
 
@@ -3361,16 +3285,9 @@ Certainly! This code is a React component written in JavaScript. Let's break it 
 In summary, this code represents a React component named `Home` that fetches posts using Appwrite, updates the component state with the fetched posts, and then conditionally renders either a message prompting the user to log in or a list of posts using the `PostCard` component within a `Container`.
 
 
+***
 
-
-
-
-
-
-
-
-
-___________________________________________________________________________________________________________
+### Post.jsx (Page)
 
 **if we want to create an "Post" page that serve the Post in our application, we import the "Button, Container" elements from the container `component` through the "index.js" file.**
 
@@ -3467,17 +3384,7 @@ Certainly! This code is a React component named `Post`. It appears to be respons
 In summary, this code represents a React component named `Post` responsible for displaying a single blog post, handling actions such as editing and deleting the post, and rendering the post details based on the `slug` parameter from the URL.
 
 
-
-
-
-
-
-
-
-
-
-
-**Now we set the routing of our pages** 
+# Now we set the routing of our pages 
 
 Here routing is very interesting come to main.jsx file 
 

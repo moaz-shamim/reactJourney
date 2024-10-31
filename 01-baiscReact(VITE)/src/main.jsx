@@ -52,11 +52,19 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
   //  MyApp()
 
-  // reactElement
-   ReactElement
+  reactElement
+  //  ReactElement
   // <ReactElement/>
   // anotherElement
   // <anotherElement/>
 
 
 )
+
+
+/*
+What is React.createElement()?
+React.createElement() is a method provided by React that allows you to create React elements programmatically using JavaScript.
+
+React.createElement() is a method used to create React elements in your code. It takes the type of element, optional properties (props), and optional children as arguments, and returns a React element that represents the desired UI element. This method is essential for building React applications and composing UI components in a declarative manner.
+*/

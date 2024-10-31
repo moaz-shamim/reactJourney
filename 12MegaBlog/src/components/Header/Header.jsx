@@ -36,12 +36,10 @@ function Header() {
       active: authStatus,
     },
   ];
-  
+
   return (
-    <header className="py-3 shadow bg-gray-900 text-white rounded-xl" >
+    <header className="py-3 shadow bg-gray-900 text-white rounded-xl">
       <Container>
-
-
         <nav className="flex">
 
           <div className="mr-4">
@@ -50,10 +48,9 @@ function Header() {
             </Link>
           </div>
 
-
           <ul className="flex ml-auto">
-            {navItems.map((item) =>
-              item.active ? (
+            
+            {navItems.map((item) =>  item.active ? (
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
@@ -65,18 +62,17 @@ function Header() {
               ) : null
             )}
 
-
             {authStatus && (
               <li>
                 <LogoutBtn />
               </li>
             )}
-
           </ul>
-          
         </nav>
-
+        
       </Container>
+
+      
     </header>
   );
 }

@@ -4,20 +4,17 @@ import "./App.css";
 function App() {
   // useState() hook
 
-  let [counterValue, setCounterValue] = useState(0);
-  
+  const [counterValue, setCounterValue] = useState(0);
 
-  const addValue = () => {
+  function addValue() {
     if (counterValue < 20) {
-      counterValue++;
-      setCounterValue(counterValue);
+      setCounterValue(counterValue + 1);
     }
-  };
+  }
 
   const removeValue = () => {
     if (counterValue > 0) {
-      counterValue--;
-      setCounterValue(counterValue);
+      setCounterValue(counterValue - 1);
     }
   };
 

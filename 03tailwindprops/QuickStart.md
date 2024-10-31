@@ -33,4 +33,4 @@ Reusability: Props allow you to create reusable components. In the above example
 
 In traditional concept of web building we put html , css and js separately but In react we put them together in components .
 
-for eg we see the card component that we made , and use it again and agai by passing different value according to our need .
+for eg we see the card component that we made , and use it again and again by passing different value according to our need .
